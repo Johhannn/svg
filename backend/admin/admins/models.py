@@ -5,7 +5,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# Custom User Manager for the User_details model
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -41,9 +40,6 @@ class User_details(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    # PermissionsMixin provides `groups` and `user_permissions` fields
-    # so we don't need to redefine them unless customizing them.
-    # The default related_names can conflict, so we'll use unique ones.
     groups = models.ManyToManyField(
         "auth.Group",
         verbose_name=_("groups"),
@@ -68,7 +64,6 @@ class User_details(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-# The rest of the models remain the same
 class PasswordResetOTP(models.Model):
     user = models.ForeignKey(User_details, on_delete=models.CASCADE)
     otp = models.CharField(max_length=6)
