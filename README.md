@@ -51,4 +51,4 @@ A full-stack Admiin application built with Django REST Framework backend and Rea
 1. Clone the repository:
    ```bash
    git clone https://github.com/Johhannn/svg.git
-   cd wiki-app/backend
+   cd super-admin/backend
